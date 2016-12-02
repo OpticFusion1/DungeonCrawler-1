@@ -6,6 +6,10 @@ import com.googlecode.lanterna.graphics.SimpleTheme;
 import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.screen.Screen;
 
+/**
+ * Handles anything to do with the lanterna UI, for example, building the
+ * initial interface and adding events to the event log.
+ */
 final class InterfaceManager
 {
     private final int GAME_WIDTH = 108;
@@ -15,8 +19,16 @@ final class InterfaceManager
     private TextBox inputBox;
 
     // Using Lanterna (https://github.com/mabe02/lanterna)
-    public void buildUI(Screen screen)
+
+    /**
+     * Constructs the initial UI for the game, including Inventory, Map, Commands and Event Log panels.
+     *
+     * Also adds a command input box at the bottom of the screen.
+     * @param screen The {@link com.googlecode.lanterna.screen.Screen Screen} on which the UI will be drawn.
+     */
+    protected void buildUI(Screen screen)
     {
+        // Creates a 'BasicWindow' which will hold all of our UI elements.
         BasicWindow window = new BasicWindow();
         window.setTheme(new SimpleTheme(TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
 
@@ -63,20 +75,30 @@ final class InterfaceManager
 
         // Create a listener for input commands.
         CommandManager cm = new CommandManager(this);
+        // This uses a lambda expressions to construct a 'WindowKeyListener' with a 'CommandListenerInterface' and
+        // assign the 'commandReceived' method on a single line.
         WindowKeyListener wkl = new WindowKeyListener(() -> cm.handleCommand(inputBox.getText()));
         window.addWindowListener(wkl);
 
-        // Finally create and display the GUI.
+        // Finally create the GUI object...
         MultiWindowTextGUI gui = new MultiWindowTextGUI(screen, new DefaultWindowManager(), new EmptySpace(TextColor.ANSI.BLACK));
 
+        // ...and display it.
         gui.addWindowAndWait(window);
     }
 
+    /**
+     * Sets the input {@link com.googlecode.lanterna.gui2.TextBox TextBox} to be the empty String, effectively clearing it.
+     */
     protected void clearInputBox()
     {
         inputBox.setText("");
     }
 
+    /**
+     * Displays the given String in the Event Log panel at the bottom of the UI.
+     * @param event The String to display in the Event Log.
+     */
     protected void addToEventLog(String event)
     {
         eventLogPanel.addComponent(new Label(event));

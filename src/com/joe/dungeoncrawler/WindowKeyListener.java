@@ -9,8 +9,14 @@ import com.googlecode.lanterna.input.KeyType;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * Concrete implementation of {@link com.googlecode.lanterna.gui2.WindowListener WindowListener} interface
+ * used soley for detecting whether the Enter key has been pressed so we know when to execute a command.
+ */
 final class WindowKeyListener implements WindowListener
 {
+    // This listener allows us to indirectly tell our CommandManager class to grab
+    // the command in the TextBox and execute it.
     private CommandListenerInterface listener;
 
     public WindowKeyListener(CommandListenerInterface listener)

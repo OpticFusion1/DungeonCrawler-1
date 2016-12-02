@@ -15,6 +15,7 @@ public final class Main
         // Create a terminal window of the required size.
         Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(122, 32)).createTerminal();
 
+        // Create a 'screen', which runs on top of the terminal that will hold all of the UI elements.
         Screen screen = new TerminalScreen(terminal);
         screen.startScreen();
 
