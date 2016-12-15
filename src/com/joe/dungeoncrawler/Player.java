@@ -21,7 +21,6 @@ public final class Player {
 	private int luk = 5;
 
 	private int lvl = 1; // Other player unique variables (e.g. gold, exp)
-	private static final int BASE_REQ = 100;
 	private int exp = 0;
 	private int gold = 0;
 
@@ -37,12 +36,9 @@ public final class Player {
 	 * Calculates total exp needed to level (used in levelUp method).
 	 * @return The amount of experience required to level up to the next level.
 	 */
-	private int calcExpToLevel() {
-		int reqExp = 0;
-		for (int i = 1; i < this.getLvl(); i++) {
-			reqExp = (int) Math.floor((reqExp + BASE_REQ * Math.pow(3, i)));
-		}
-		return reqExp;
+	private int calcExpToLevel() { // e.g. lv 1 = 1000, lv 2 = 3000, lv 3 = 800..
+		int reqExp = this.getLvl();
+		return ((reqExp * reqExp + reqExp)/2)*1000;
 	}
 
 	/**
