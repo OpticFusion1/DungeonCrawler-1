@@ -37,17 +37,32 @@ terminal for the game.
 ## Commands:
 
 save[slotfile]			  -		  saves the game state to the slotfile parameter
+
 load[slotfile]			  -		  Loads the game state to the slotfile parameter
+
 quit					  -		  Quit the program
+
 n e s w					  - 	  MovementNorth east south west respectively
+
 Talk [NPC]  			  - 	  Talk to NPC's / Shop
+
 inv			 			  -	      list contents of player inventory
+
 examine[Item/NPC]		  -		  provides information (description/stats) about item/npc
+
 look				      -		  provides information about current room
+
 Take[Item]				  -		  Adds item to backpack
+
 Pickup[Item]		  	  -  	  Same as Take
+
 Equip[Item]				  -	  	  Equip an item, can be either on floor (takes item first) or in backpack
+
 equipment[]				  -		  Lists all items currently equipped
+
 use[Item]use[Object]	  -		  Use a consumable item (scroll/potion/quest item) or Use an object in room (i.e. Lever)
+
 open[Door]				  -		  Open an openable object e.g. door/trapdoor/chest	
+
 put[object | Room/Object] -		  Place an item on an object (table/chest) or on the floor in a room
+
