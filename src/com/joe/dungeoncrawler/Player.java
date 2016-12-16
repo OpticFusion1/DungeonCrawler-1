@@ -1,7 +1,5 @@
 package com.joe.dungeoncrawler;
 
-import java.math.*;
-
 /**
  * Player class that will allow for leveling up, modification of stats
  * experience and other player activities. inventory may also be included here
@@ -93,10 +91,6 @@ public final class Player {
 
 	public int getLvl() {
 		return lvl;
-	}
-
-	public static int getBaseReq() {
-		return BASE_REQ;
 	}
 
 	public int getExp() {
